@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<!-- Post Header -->
+<div style="
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 30px;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+">
+    <h1>{{ post.title }}</h1>
+    <p><strong>By:</strong> {{ post.author }}</p>
+    <p><em>{{ post.created_at }}</em></p>
+</div>
+
+<!-- Post Content -->
+<div>
+    <p>{{ post.content }}</p>
+</div>
+
+<hr>
+<p>
+    <a href="{% url 'core:post_edit' post.pk %}">Edit</a> |
+    <a href="{% url 'core:post_delete' post.pk %}">Delete</a> |
+    <a href="{% url 'core:post_list' %}">Back to Posts</a>
+</p>
+
+<hr>
+
+<!-- Comments -->
+<h3>Comments</h3>
+<div id="comments">
+    {% for comment in comments %}
+    <div class="comment" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+        <strong>{{ comment.author }}</strong>
+        <em>on {{ comment.created_at|date:"Y-m-d H:i" }}</em><br>
+        {{ comment.content }}
+       
+    </div>
+    {% empty %}
+    <p>No comments yet.</p>
+    {% endfor %}
+</div>
+
+<!-- Add Comment Form -->
+<hr>
+<h3>Add a Comment</h3>
+<form id="comment-form" data-post-id="{{ post.id }}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post Comment</button>
+</form>
+{% if post.image %}
+  <img src="{{ post.image.url }}" alt="Post Image" style="max-width: 100%;">
+{% endif %}
+
+{% endblock %}
+<button type="submit" name="like_post" class="btn btn-like">
+    <i class="fa fa-heart me-1"></i> 
+    {{ comment.likes.count }} Likes
+       </button>
+{% block extra_scripts %}
+
+{% endblock %}

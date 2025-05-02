@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Profile</h2>
+<p>Username: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+{% if user.bio %}<p>Bio: {{ user.bio }}</p>{% endif %}
+<a href="{% url 'core:logout' %}">Logout</a>
+{% endblock %}

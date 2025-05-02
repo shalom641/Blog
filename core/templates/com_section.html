@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Blog | Engage with Readers</title>
+    <style>
+        
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #fff;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 2rem;
+        }
+
+        .comments-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .comment-form {
+            margin-bottom: 2rem;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            min-height: 100px;
+            resize: vertical;
+            margin-bottom: 0.8rem;
+        }
+
+        .comment-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .comment-submit:hover {
+            background: var(--secondary);
+        }
+
+        /* Comment List */
+        .comment-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: #16b197;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-text {
+            margin: 0;
+        }
+
+        /* Hidden form that appears when "Post Comment" clicked */
+        #comment-toggle {
+            display: none;
+        }
+
+        #comment-toggle:checked ~ .comment-form {
+            display: block;
+        }
+
+        .comment-form {
+            display: none;
+        }
+
+        .show-comment-form {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>The Future of Web Development</h1>
+        <p>Exploring the latest trends in modern web development...</p>
+
+        <!-- Like Button (CSS-only toggle) -->
+        <div class="like-container">
+            <input type="checkbox" id="likeCheckbox" class="like-toggle">
+            <label for="likeCheckbox" class="like-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                </svg>
+                <span class="like-text">Like</span>
+                <span class="like-count">24</span>
+            </label>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h2 class="comments-title">Join the Discussion</h2>
+
+            <!-- Toggle for comment form -->
+            <input type="checkbox" id="comment-toggle">
+            <label for="comment-toggle" class="show-comment-form">Add a Comment</label>
+
+            <!-- Comment Form (Hidden by default) -->
+            <form class="comment-form" action="#" method="POST">
+                <textarea class="comment-input" placeholder="Share your thoughts..." required></textarea>
+                <button type="submit" class="comment-submit">Post Comment</button>
+            </form>
+
+            <!-- Comment List -->
+            <ul class="comment-list">
+                <!-- Example Comments -->
+                <li class="comment-item">
+                    <div class="comment-avatar">JD</div>
+                    <div class="comment-content">
+                        <div class="comment-author">John Doe</div>
+                        <div class="comment-date">2 hours ago</div>
+                        <p class="comment-text">Great insights! I especially liked the part about WebAssembly.</p>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-avatar">AS</div>
+                    <div class="comment-content">
+                        <div class="comment-author">Alice Smith</div>
+                        <div class="comment-date">1 day ago</div>
+                        <p class="comment-text">How do you see AI impacting this space in the next 5 years?</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </article>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+
+  {% block content %}
+  <style>
+  footer {
+    background-color:rgb(109, 154, 236);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  footer p {
+    font-size: 14px;
+    margin: 0;
+  }
+</style>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+          <h2>SAP Overview</h2>
+          <div class="card-body">
+            <p>SAP (Systems, Applications, and Products in Data Processing) is a global leader in enterprise resource
+              planning (ERP) software, enabling businesses to streamline processes and achieve digital transformation
+              across departments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+          <h2>Key Features of SAP</h2>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li><strong>Integration:</strong></li>
+            <li><strong>Scalability:</strong></li>
+            <li><strong>Customization:</strong> </li>
+            <li><strong>Automation:</strong> </li>
+            <li><strong>Real-Time Analytics:</strong> </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+
+  <div class="col-md-4">
+
+    
+      <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+          <h2>SAP in the Digital Era</h2>
+        </div>
+        <div class="card-body">
+          <p>With the evolution of cloud computing and data analytics, SAP has embraced new technologies such as SAP
+            S/4HANA to drive next-generation ERP and ensure enterprises remain competitive in the digital age.</p>
+        </div>
+      </div>
+    
+    
+  </div>
+
+
+
+
+
+  </div>
+
+
+<div class="col-md-4 mt-3">
+  <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+    <div class="card-header">
+      <h2>History of SAP</h2>
+    </div>
+    <div class="card-body">
+      <p>Founded in 1972 by five former IBM engineers, SAP was created to enable real-time business processing and
+        has since evolved into a leader in ERP systems globally, transforming business operations for millions
+        of customers.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}

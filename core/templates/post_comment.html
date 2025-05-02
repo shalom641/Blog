@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}Blog Posts{% endblock %}
+
+{% block content %}
+<style>
+    .comment-box {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .comment-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .comment-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ccc;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .comment-author {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .comment-content {
+        font-size: 15px;
+        color: #444;
+        margin-bottom: 10px;
+    }
+
+    .comment-actions {
+        font-size: 14px;
+        color: #888;
+    }
+
+    .comment-actions a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #1877f2;
+        font-weight: 500;
+    }
+
+    .comment-actions a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="mt-4">
+    {% for comment in post.comments.all %}
+        <div class="comment-box">
+            <div class="comment-header">
+                <div class="comment-avatar"></div>
+                <div>
+                    <span class="comment-author">{{ comment.author }}</span><br>
+                    <small class="text-muted">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+                </div>
+            </div>
+
+            <div class="comment-content">
+                {{ comment.content }}
+            </div>
+
+            <div class="comment-actions">
+                <span>Likes: {{ comment.likes.count }}</span>
+                {% if user.is_authenticated %}
+                    {% if comment.likes.filter(user=request.user).exists %}
+                        <a href="{% url 'core:unlike_comment' comment.id %}">Unlike</a>
+                    {% else %}
+                        <a href="{% url 'core:like_comment' comment.id %}">Like</a>
+                    {% endif %}
+                {% endif %}
+                <a href="#">Reply</a>
+                <a href="#">View more</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No comments yet. Be the first to comment!</p>
+    {% endfor %}
+</div>
+{% endblock %}
