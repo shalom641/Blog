@@ -3,21 +3,23 @@
 
 {% block content %}
 <!-- Post Header -->
+{% if post.image %}
 <div style="
-    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-image: url({{post.image.url}});
     background-size: cover;
     background-position: center;
     padding: 60px 30px;
     color: white;
     border-radius: 8px;
     margin-bottom: 20px;
+    margin-top: 20px;
     text-align: center;
 ">
     <h1>{{ post.title }}</h1>
     <p><strong>By:</strong> {{ post.author }}</p>
     <p><em>{{ post.created_at }}</em></p>
 </div>
-
+{% endif %}
 <!-- Post Content -->
 <div>
     <p>{{ post.content }}</p>
@@ -27,7 +29,7 @@
 <p>
     <a href="{% url 'core:post_edit' post.pk %}">Edit</a> |
     <a href="{% url 'core:post_delete' post.pk %}">Delete</a> |
-    <a href="{% url 'core:post_list' %}">Back to Posts</a>
+    <a href="{% url 'core:home' %}">Back to Posts</a>
 </p>
 
 <hr>
@@ -53,11 +55,8 @@
 <form id="comment-form" data-post-id="{{ post.id }}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Post Comment</button>
+    <button class="btn btn-success" type="submit">Post Comment</button>
 </form>
-{% if post.image %}
-  <img src="{{ post.image.url }}" alt="Post Image" style="max-width: 100%;">
-{% endif %}
 
 {% endblock %}
 <button type="submit" name="like_post" class="btn btn-like">
